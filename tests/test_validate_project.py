@@ -24,6 +24,14 @@ class ValidateProjectTests(unittest.TestCase):
             errors = validate(clone)
             self.assertTrue(any("reference-image-workflow.md" in error for error in errors))
 
+    def test_missing_template_library_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            clone = Path(temp_dir) / "project"
+            shutil.copytree(PROJECT_ROOT, clone)
+            (clone / "skills/junda-paper-emboss-editorial/references/template-library.md").unlink()
+            errors = validate(clone)
+            self.assertTrue(any("template-library.md" in error for error in errors))
+
     def test_default_prompt_must_use_current_slug(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             clone = Path(temp_dir) / "project"
@@ -66,4 +74,22 @@ class ValidateProjectTests(unittest.TestCase):
                 encoding="utf-8",
             )
             errors = validate(clone)
-            self.assertIn("editable text overlay missing {{TITLE}}", errors)
+            self.assertIn(
+                "editable text overlay missing {{TITLE}}: editable-text-overlay-3x4.svg",
+                errors,
+            )
+
+    def test_wide_editable_text_overlay_requires_title_placeholder(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            clone = Path(temp_dir) / "project"
+            shutil.copytree(PROJECT_ROOT, clone)
+            template = clone / "skills/junda-paper-emboss-editorial/assets/editable-text-overlay-16x9.svg"
+            template.write_text(
+                template.read_text(encoding="utf-8").replace("{{TITLE}}", ""),
+                encoding="utf-8",
+            )
+            errors = validate(clone)
+            self.assertIn(
+                "editable text overlay missing {{TITLE}}: editable-text-overlay-16x9.svg",
+                errors,
+            )

@@ -1,4 +1,4 @@
-# 俊达·纸面压纹视觉设计 / Junda Paper Emboss Editorial
+# Junda Paper Emboss Editorial
 
 `$junda-paper-emboss-editorial` 将主题、少量文案和合规参考图，转成原创的纸张压纹编辑视觉：无涂层纸纤维、浅击凸/压凹、统一柔侧光、一个视觉隐喻、克制色彩与大留白。
 
@@ -11,6 +11,22 @@
 ```
 
 通常只需提供主题或标题。可选补充副标题、比例、用途、颜色、品牌限制、禁用元素和参考图。
+
+## 模板库
+
+项目内置四个可复用的无字艺术底图模板；请求套版、多版本或指定构图时会读取 [模板库](skills/junda-paper-emboss-editorial/references/template-library.md)。当用途和比例直接命中下列场景时，Skill 默认优先选最匹配的模板；每张图只选一个模板，不混合结构。
+
+| 模板键 | 比例 | 适用场景 |
+| --- | --- | --- |
+| `wave-recessed-field` | 3:4 | 文章封面、书封、反思型内容 |
+| `threshold-cut-poster` | 3:4 | 转折、决策、发布或展览海报 |
+| `signal-path-hero` | 16:9 | 网站 Hero、产品叙事、活动页首图 |
+| `index-window-cover` | 1:1 | 播客封面、内容系列、社交方形封面 |
+
+```text
+使用 $junda-paper-emboss-editorial，选用 `signal-path-hero` 模板，
+为“把复杂问题变成一条可执行路径”生成无字 16:9 网站 Hero；墨绿纸基，橙色只作终点标记，左侧留作后续文字层。
+```
 
 ## GitHub 安装
 
@@ -50,7 +66,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
 
 ## 文字精度
 
-短标题且用户接受近似时，可以直接生成。文章标题、品牌名、日期、数据和长中文默认先做无字艺术底图，再以 SVG、Figma、Canva 或已有工具叠加精确文字层；这样不会把模型的近似文字误报为排版成品。默认 `3:4` 可直接从 [可编辑 SVG 文字层模板](skills/junda-paper-emboss-editorial/assets/editable-text-overlay-3x4.svg) 开始。
+短标题且用户接受近似时，可以直接生成。文章标题、品牌名、日期、数据和长中文默认先做无字艺术底图，再以 SVG、Figma、Canva 或已有工具叠加精确文字层；这样不会把模型的近似文字误报为排版成品。默认 `3:4` 可直接从 [可编辑 SVG 文字层模板](skills/junda-paper-emboss-editorial/assets/editable-text-overlay-3x4.svg) 开始；横版 Hero 可用 [16:9 文字层模板](skills/junda-paper-emboss-editorial/assets/editable-text-overlay-16x9.svg)，其左侧安全区对应 `signal-path-hero` 的默认版式。
 
 ## 预览
 
@@ -59,6 +75,16 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
 | ![暖白纸张上的 PAUSE 浅压凹海报](skills/junda-paper-emboss-editorial/assets/template-previews/01-pause-deboss-poster.png) | ![深蓝纸张上的无文字浅浮雕网站头图](skills/junda-paper-emboss-editorial/assets/template-previews/02-decision-aperture-hero.png) | ![暖灰纸面上带砖红边的压凹门框](skills/junda-paper-emboss-editorial/assets/template-previews/03-authorized-style-reference.png) |
 
 第三张预览用项目自有、无主体的第二张预览作为 `style-only + direct-conditioned` 参考，仅保留纸材与浅压纹语言；主题、隐喻、比例、布局和配色均重新设计。所有预览为本项目新生成的概念图，用于验证材质、光向、留白和工艺关系；不代表可直接印刷或生产的工艺文件。项目不提交用户参考图、私人生成结果或第三方样图。
+
+| 波纹压凹场 | 纸缝阈值海报 |
+| --- | --- |
+| ![暖白纸上的波纹压凹无字模板](skills/junda-paper-emboss-editorial/assets/template-previews/04-wave-recessed-field.png) | ![灰纸上砖红纸缝的无字模板](skills/junda-paper-emboss-editorial/assets/template-previews/05-threshold-cut-poster.png) |
+
+| 信号路径 Hero | 索引窗口方形封面 |
+| --- | --- |
+| ![深墨绿纸上阶梯路径的无字横版模板](skills/junda-paper-emboss-editorial/assets/template-previews/06-signal-path-hero.png) | ![蓝灰纸上索引窗口的无字方形模板](skills/junda-paper-emboss-editorial/assets/template-previews/07-index-window-cover.png) |
+
+这四张新增预览分别对应模板库中的四个模板键。它们均为项目生成的无字概念底图；标题、日期、品牌名等准确文字应放入可编辑文字层，而不是让图像模型渲染。
 
 ## 项目结构
 
@@ -70,7 +96,8 @@ skills/junda-paper-emboss-editorial/
 │   ├── design-system.md             # 版式、纸材、工艺和色彩职责
 │   ├── prompt-blueprint.md          # 生成规格模板
 │   ├── reference-image-workflow.md  # 参考图契约与原创性门槛
-│   └── strict-text-mode.md          # 精确文字层
+│   ├── strict-text-mode.md          # 精确文字层
+│   └── template-library.md          # 可复用版式与提示词骨架
 └── assets/template-previews/        # 通用概念预览与 manifest
 ```
 

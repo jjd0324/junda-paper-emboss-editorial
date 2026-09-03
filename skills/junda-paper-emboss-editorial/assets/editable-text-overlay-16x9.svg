@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <!-- Transparent 16:9 text overlay. The left x:8–48% safe zone matches signal-path-hero. -->
+  <g fill="#1C1A17">
+    <text x="154" y="310" font-family="Noto Serif CJK SC, Source Han Serif SC, STSong, Georgia, serif" font-size="108" font-weight="600" letter-spacing="-3">{{TITLE}}</text>
+    <text x="154" y="386" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, Arial, sans-serif" font-size="30" letter-spacing="1">{{SUBTITLE}}</text>
+    <path d="M154 444H922" fill="none" stroke="#1C1A17" stroke-width="2" opacity="0.36"/>
+    <text x="154" y="948" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, Arial, sans-serif" font-size="24" letter-spacing="2">{{INDEX}}</text>
+  </g>
+</svg>

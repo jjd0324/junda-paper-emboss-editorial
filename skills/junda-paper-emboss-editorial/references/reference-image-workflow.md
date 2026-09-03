@@ -56,7 +56,7 @@ original_design_lock:
 
 - **默认 `analyze-only`**：外部、权属未知、带可识别主体、含品牌/签名/水印的图，只能先转成文字设计契约；生成时不传原图。
 - **`direct-conditioned` 的条件**：用户明确声明该图自有或获授权；图的角色为 `style-only`；图中不得含人物、产品包装、地标、来源文字、Logo、签名或水印；每张成图只选择一张图片。生成请求必须列出 `requested_keep`、`requested_change` 与 `prohibit`。
-- 使用 `direct-conditioned` 时，`requested_keep` 只能是纸材、纤维密度、压纹深浅、侧光方向与软硬、色温或视觉密度；`requested_change` 必须让主题、主隐喻、版式家族、标题角色、色彩关系、比例中的至少四项不同，且不重用参考图文字、Logo、构图或对象。
+- 使用 `direct-conditioned` 时，`requested_keep` 只能是纸材、纤维密度、压纹深浅、侧光方向与软硬、色温或视觉密度；`requested_change` 必须独立确定主题、主隐喻、版式家族、标题角色、色彩关系、比例中的至少四项。若参考图本来不含其中某类信息，不伪造“差异比较”，而是在设计锁中明确该项为新作自主决定；始终不重用参考图文字、Logo、构图或对象。
 
 ### composition-only：布局原则参考
 

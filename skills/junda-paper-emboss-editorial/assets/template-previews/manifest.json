@@ -1,12 +1,12 @@
 {
-  "version": 3,
+  "version": 4,
   "generated_concept_previews": true,
   "items": [
     {
       "id": "pause-deboss-poster",
       "preview": "01-pause-deboss-poster.png",
       "license": "CC-BY-4.0",
-      "copyright_holder": "Junda (俊达)",
+      "copyright_holder": "Junda",
       "provenance": {
         "kind": "project-generated-ai-concept-preview",
         "generator": "OpenAI Media Service",
@@ -21,7 +21,7 @@
       "id": "decision-aperture-hero",
       "preview": "02-decision-aperture-hero.png",
       "license": "CC-BY-4.0",
-      "copyright_holder": "Junda (俊达)",
+      "copyright_holder": "Junda",
       "provenance": {
         "kind": "project-generated-ai-concept-preview",
         "generator": "OpenAI Media Service",
@@ -36,7 +36,7 @@
       "id": "authorized-style-reference",
       "preview": "03-authorized-style-reference.png",
       "license": "CC-BY-4.0",
-      "copyright_holder": "Junda (俊达)",
+      "copyright_holder": "Junda",
       "provenance": {
         "kind": "project-generated-ai-concept-preview",
         "generator": "OpenAI Media Service",
@@ -51,6 +51,66 @@
         "transport": "direct-conditioned"
       },
       "checks": ["paper-fibers", "shallow-deboss", "new-rectangle-metaphor", "new-ratio", "no-source-layout"]
+    },
+    {
+      "id": "wave-recessed-field",
+      "preview": "04-wave-recessed-field.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "9fb727249211943c078edd0d2f8778214e30478a09479172f37a2765f8696948",
+      "ratio": "3:4",
+      "mode": "strict-text-art-layer",
+      "checks": ["paper-fibers", "shallow-deboss", "single-wave-metaphor", "title-safe-area", "no-generated-text"]
+    },
+    {
+      "id": "threshold-cut-poster",
+      "preview": "05-threshold-cut-poster.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "462f748f06d6c9c10f82dd3cf6ddf0ee97791faea4e2834188ba2a43e252b87f",
+      "ratio": "3:4",
+      "mode": "strict-text-art-layer",
+      "checks": ["paper-fibers", "shallow-cut", "single-threshold-metaphor", "title-safe-area", "no-generated-text"]
+    },
+    {
+      "id": "signal-path-hero",
+      "preview": "06-signal-path-hero.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "e1a610e1360a47ff5c4c1d94c9c08d156540fdea64840d8a38476a03c5145a25",
+      "ratio": "16:9",
+      "mode": "strict-text-art-layer",
+      "checks": ["paper-fibers", "shallow-recess", "single-path-metaphor", "left-copy-safe-area", "no-generated-text"]
+    },
+    {
+      "id": "index-window-cover",
+      "preview": "07-index-window-cover.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "4c04cf77bf93404281f6c646e83209d016e1346cd776fddd450803ac3272e09b",
+      "ratio": "1:1",
+      "mode": "strict-text-art-layer",
+      "checks": ["paper-fibers", "shallow-window", "single-index-metaphor", "title-safe-area", "no-generated-text"]
     }
   ]
 }

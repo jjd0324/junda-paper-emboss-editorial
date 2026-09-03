@@ -15,7 +15,14 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SKILL_RELATIVE = Path("skills/junda-paper-emboss-editorial")
+TEMPLATE_LIBRARY_RELATIVE = SKILL_RELATIVE / "references/template-library.md"
 EXPECTED_NAME = "junda-paper-emboss-editorial"
+TEMPLATE_PREVIEW_IDS = (
+    "wave-recessed-field",
+    "threshold-cut-poster",
+    "signal-path-hero",
+    "index-window-cover",
+)
 REQUIRED_FILES = (
     Path("README.md"),
     Path("LICENSE"),
@@ -30,7 +37,9 @@ REQUIRED_FILES = (
     SKILL_RELATIVE / "references/prompt-blueprint.md",
     SKILL_RELATIVE / "references/reference-image-workflow.md",
     SKILL_RELATIVE / "references/strict-text-mode.md",
+    TEMPLATE_LIBRARY_RELATIVE,
     SKILL_RELATIVE / "assets/editable-text-overlay-3x4.svg",
+    SKILL_RELATIVE / "assets/editable-text-overlay-16x9.svg",
     SKILL_RELATIVE / "assets/template-previews/manifest.json",
 )
 FORBIDDEN_TEXT = (
@@ -41,10 +50,13 @@ FORBIDDEN_TEXT = (
 )
 LOCAL_LINK = re.compile(r"\]\(([^)#]+)(?:#[^)]+)?\)")
 PREVIEW_LICENSE = "CC-BY-4.0"
-PREVIEW_COPYRIGHT_HOLDER = "Junda (俊达)"
+PREVIEW_COPYRIGHT_HOLDER = "Junda"
 PREVIEW_PROVENANCE_KIND = "project-generated-ai-concept-preview"
 PREVIEW_GENERATOR = "OpenAI Media Service"
-TEXT_OVERLAY_RELATIVE = SKILL_RELATIVE / "assets/editable-text-overlay-3x4.svg"
+TEXT_OVERLAY_RELATIVES = (
+    SKILL_RELATIVE / "assets/editable-text-overlay-3x4.svg",
+    SKILL_RELATIVE / "assets/editable-text-overlay-16x9.svg",
+)
 TEXT_OVERLAY_PLACEHOLDERS = ("{{TITLE}}", "{{SUBTITLE}}", "{{INDEX}}")
 
 
@@ -144,6 +156,19 @@ def check_manifest(root: Path) -> list[str]:
             actual_hash = hashlib.sha256(image_path.read_bytes()).hexdigest()
             if actual_hash != expected_hash:
                 errors.append(f"preview hash mismatch: {preview}")
+    for template_id in TEMPLATE_PREVIEW_IDS:
+        if template_id not in ids:
+            errors.append(f"preview manifest missing template preview: {template_id}")
+    return errors
+
+
+def check_template_library(root: Path) -> list[str]:
+    path = root / TEMPLATE_LIBRARY_RELATIVE
+    contents = path.read_text(encoding="utf-8")
+    errors: list[str] = []
+    for template_id in TEMPLATE_PREVIEW_IDS:
+        if f"## `{template_id}`" not in contents:
+            errors.append(f"template library missing template: {template_id}")
     return errors
 
 
@@ -171,8 +196,8 @@ def check_behavior_cases(root: Path) -> list[str]:
     return errors
 
 
-def check_text_overlay_template(root: Path) -> list[str]:
-    path = root / TEXT_OVERLAY_RELATIVE
+def check_text_overlay_template(root: Path, relative_path: Path) -> list[str]:
+    path = root / relative_path
     errors: list[str] = []
     try:
         ET.parse(path)
@@ -181,7 +206,7 @@ def check_text_overlay_template(root: Path) -> list[str]:
     contents = path.read_text(encoding="utf-8")
     for placeholder in TEXT_OVERLAY_PLACEHOLDERS:
         if placeholder not in contents:
-            errors.append(f"editable text overlay missing {placeholder}")
+            errors.append(f"editable text overlay missing {placeholder}: {relative_path.name}")
     return errors
 
 
@@ -210,8 +235,10 @@ def validate(root: Path = PROJECT_ROOT) -> list[str]:
 
     errors.extend(check_local_links(root))
     errors.extend(check_manifest(root))
+    errors.extend(check_template_library(root))
     errors.extend(check_behavior_cases(root))
-    errors.extend(check_text_overlay_template(root))
+    for text_overlay_relative in TEXT_OVERLAY_RELATIVES:
+        errors.extend(check_text_overlay_template(root, text_overlay_relative))
 
     for text_path in root.rglob("*"):
         if not text_path.is_file() or text_path.suffix.lower() not in {".md", ".yaml", ".yml", ".json", ".py"}:
