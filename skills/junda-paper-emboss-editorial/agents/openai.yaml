@@ -1,0 +1,7 @@
+interface:
+  display_name: "俊达·纸面压纹视觉设计"
+  short_description: "将主题和合规参考图转为原创纸张压纹编辑视觉"
+  default_prompt: "使用 $junda-paper-emboss-editorial 为“新想法”生成一张 3:4 的纸面压纹视觉设计。"
+
+policy:
+  allow_implicit_invocation: true

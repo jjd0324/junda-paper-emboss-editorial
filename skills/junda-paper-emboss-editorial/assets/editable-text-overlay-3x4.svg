@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440">
+  <!-- Transparent 3:4 text overlay. Replace the three placeholders with exact user-provided copy. -->
+  <g fill="#1C1A17">
+    <text x="108" y="252" font-family="Noto Serif CJK SC, Source Han Serif SC, STSong, Georgia, serif" font-size="110" font-weight="600" letter-spacing="-3">{{TITLE}}</text>
+    <text x="108" y="322" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, Arial, sans-serif" font-size="28" letter-spacing="1">{{SUBTITLE}}</text>
+    <path d="M108 376H972" fill="none" stroke="#1C1A17" stroke-width="2" opacity="0.36"/>
+    <text x="108" y="1332" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, Arial, sans-serif" font-size="22" letter-spacing="2">{{INDEX}}</text>
+  </g>
+</svg>

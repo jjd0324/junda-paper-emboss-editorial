@@ -1,0 +1,56 @@
+{
+  "version": 3,
+  "generated_concept_previews": true,
+  "items": [
+    {
+      "id": "pause-deboss-poster",
+      "preview": "01-pause-deboss-poster.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda (俊达)",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "1748925abc5b7703b09a6680e776075830912da2ec28499a9f10623c8c09fa1b",
+      "ratio": "3:4",
+      "mode": "direct-short-text",
+      "checks": ["paper-fibers", "shallow-deboss", "single-metaphor", "restrained-palette"]
+    },
+    {
+      "id": "decision-aperture-hero",
+      "preview": "02-decision-aperture-hero.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda (俊达)",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "none"
+      },
+      "sha256": "617728f7f51c3778e91512d7d1cfc331d108c557262345d34d25fb1ba3267cc4",
+      "ratio": "16:9",
+      "mode": "strict-text-art-layer",
+      "checks": ["left-text-safe-area", "shallow-deboss", "single-metaphor", "no-generated-text"]
+    },
+    {
+      "id": "authorized-style-reference",
+      "preview": "03-authorized-style-reference.png",
+      "license": "CC-BY-4.0",
+      "copyright_holder": "Junda (俊达)",
+      "provenance": {
+        "kind": "project-generated-ai-concept-preview",
+        "generator": "OpenAI Media Service",
+        "source_material": "02-decision-aperture-hero.png"
+      },
+      "sha256": "8115660e830b9a074b210e044b86b534a71ba8713e2ec7f81647ccd6ff1cf7ab",
+      "ratio": "3:4",
+      "mode": "style-only-direct-conditioned",
+      "reference_contract": {
+        "source_preview": "02-decision-aperture-hero.png",
+        "rights": "user-owned",
+        "transport": "direct-conditioned"
+      },
+      "checks": ["paper-fibers", "shallow-deboss", "new-rectangle-metaphor", "new-ratio", "no-source-layout"]
+    }
+  ]
+}
